@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Scanning results
+{% endblock %}
+
+{% block content %}
+    <h1>Results:</h1>
+    <form method="post">
+        {% csrf_token %}
+    {% for i in info %}
+        <div class="alert alert-warning mt-2">
+            <h3>{{ i.os }}</h3>
+            <p>{{ i.info|linebreaks }}</p>
+        </div>
+    {% endfor %}
+    </form>
+{% endblock %}
